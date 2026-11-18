@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Check, Phone, MessageCircle, ChevronRight } from 'lucide-react';
-import { SERVICES, BUSINESS } from '../data.js';
+import { SERVICES, BUSINESS, IMG } from '../data.js';
 import { PageBanner, CtaBand, Reveal, useTitle } from '../components/ui.jsx';
 import NotFound from './NotFound.jsx';
 
@@ -13,7 +13,7 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <PageBanner image={s.image} title={s.title} text={s.short} crumbs={[{ label: 'Services', to: '/services' }, { label: s.title }]} />
+      <PageBanner image={IMG.bannerServices} title={s.title} text={s.short} crumbs={[{ label: 'Services', to: '/services' }, { label: s.title }]} />
       <section className="section">
         <div className="wrap detail">
           <div>

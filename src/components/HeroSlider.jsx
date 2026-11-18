@@ -7,7 +7,7 @@ const INTERVAL = 6500;
 
 const SLIDES = [
   {
-    image: IMG.door,
+    image: IMG.heroLockout,
     pos: '40% center',
     pill: 'Available now across Bradford',
     title: <>Back inside, <em>safely.</em> Your local home locksmith, day or night.</>,
@@ -16,7 +16,7 @@ const SLIDES = [
     cta: 'Emergency lockouts'
   },
   {
-    image: IMG.key,
+    image: IMG.heroKeys,
     pos: '55% center',
     pill: 'Snapped & jammed keys',
     title: <>Key snapped in the lock? <em>Do not force it.</em></>,
@@ -25,7 +25,7 @@ const SLIDES = [
     cta: 'Snapped key removal'
   },
   {
-    image: IMG.cylinder,
+    image: IMG.heroUpvc,
     pos: '60% center',
     pill: 'uPVC & composite doors',
     title: <>Handle limp or door stiff? <em>Fixed in one visit.</em></>,
@@ -34,7 +34,7 @@ const SLIDES = [
     cta: 'uPVC door repair'
   },
   {
-    image: IMG.window,
+    image: IMG.heroWindow,
     pos: '50% center',
     pill: 'Windows & home security',
     title: <>Every window and door <em>locked tight.</em></>,

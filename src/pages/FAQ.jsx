@@ -7,7 +7,7 @@ export default function FAQ() {
   useTitle('Locksmith FAQs | Paramount Locksmiths', 'Answers to common questions about home lockouts, pricing, arrival times and lock upgrades in Bradford.');
   return (
     <>
-      <PageBanner image={IMG.cylinder} title="Frequently asked questions" text="Straight answers about prices, arrival times and how we work." crumbs={[{ label: 'FAQ' }]} />
+      <PageBanner image={IMG.bannerFaq} title="Frequently asked questions" text="Straight answers about prices, arrival times and how we work." crumbs={[{ label: 'FAQ' }]} />
       <section className="section"><div className="wrap"><FaqList items={FAQS} /></div></section>
       <CtaBand />
     </>

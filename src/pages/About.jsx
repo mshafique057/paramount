@@ -7,10 +7,10 @@ export default function About() {
   useTitle('About Us | Paramount Locksmiths', 'Meet Paramount Locksmiths: a dedicated residential locksmith for Bradford homes, with honest prices and tidy, guaranteed work.');
   return (
     <>
-      <PageBanner image={IMG.window} title="About Paramount Locksmiths" text="A local locksmith focused entirely on the doors and windows of people's homes." crumbs={[{ label: 'About' }]} />
+      <PageBanner image={IMG.bannerAbout} title="About Paramount Locksmiths" text="A local locksmith focused entirely on the doors and windows of people's homes." crumbs={[{ label: 'About' }]} />
       <section className="section">
         <div className="wrap split">
-          <Reveal className="split-img"><img src={IMG.window} alt="Locksmith repairing a window lock" loading="lazy" /></Reveal>
+          <Reveal className="split-img"><img src={IMG.homeWhyUs} alt="Uniformed locksmith working on a residential lock with tools" loading="lazy" /></Reveal>
           <Reveal delay={0.1}>
             <span className="eyebrow">Our story</span>
             <h2>Built for homeowners, not for everyone</h2>

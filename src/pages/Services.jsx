@@ -8,7 +8,7 @@ export default function Services() {
   useTitle('Home Locksmith Services in Bradford | Paramount Locksmiths', 'Lockout entry, lost keys, snapped key removal, uPVC door and window lock repair, anti-snap upgrades and break-in repairs for Bradford homes.');
   return (
     <>
-      <PageBanner image={IMG.key} title="Home locksmith services" text="Residential door and window lock help for houses, bungalows, flats and cottages across Bradford." crumbs={[{ label: 'Services' }]} />
+      <PageBanner image={IMG.bannerServices} title="Home locksmith services" text="Residential door and window lock help for houses, bungalows, flats and cottages across Bradford." crumbs={[{ label: 'Services' }]} />
       <section className="section">
         <div className="wrap">
           <div className="svc-intro">

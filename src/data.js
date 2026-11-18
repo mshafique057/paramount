@@ -14,15 +14,25 @@ export const BUSINESS = {
 };
 
 export const IMG = {
-  door: '/uk_composite_front_door.webp',
-  cylinder: '/uk_upvc_cylinder_lock.webp',
-  key: '/uk_broken_key_extraction.webp',
-  window: '/uk_window_lock_repair.webp',
-  keys: '/uk_house_keys.webp',
-  multipoint: '/uk_multipoint_handle.webp',
-  antisnap: '/uk_antisnap_cylinder.webp',
-  mortice: '/uk_mortice_lock.webp',
-  handle: '/uk_door_handle.webp'
+  heroLockout: '/hero-lockout.webp',
+  heroKeys: '/hero-keys.webp',
+  heroUpvc: '/hero-upvc.webp',
+  heroWindow: '/hero-window.webp',
+  svcLockout: '/svc-lockout.webp',
+  svcLostKeys: '/svc-lost-keys.webp',
+  svcSnappedKey: '/svc-snapped-key.webp',
+  svcUpvcRepair: '/svc-upvc-repair.webp',
+  svcWindowLock: '/svc-window-lock.webp',
+  svcAntisnap: '/svc-antisnap.webp',
+  svcMortice: '/svc-mortice.webp',
+  svcBreakin: '/svc-breakin.webp',
+  homeWhyUs: '/home-why-us.webp',
+  homeSecurity: '/home-security.webp',
+  bannerAbout: '/banner-about.webp',
+  bannerServices: '/banner-services.webp',
+  bannerAreas: '/banner-areas.webp',
+  bannerFaq: '/banner-faq.webp',
+  bannerContact: '/banner-contact.webp'
 };
 
 export const NAV = [
@@ -40,7 +50,7 @@ export const SERVICES = [
     icon: 'DoorOpen',
     title: 'Emergency Home Lockout',
     short: 'Shut out of your own house? We get you back in without drilling or damaging the door.',
-    image: IMG.door,
+    image: IMG.svcLockout,
     intro:
       'Door pulled shut behind you, keys left on the kitchen side, or a lock that has simply stopped co-operating. Our locksmiths specialise in careful, damage-free entry to houses, bungalows and flats, at any hour.',
     signs: [
@@ -62,7 +72,7 @@ export const SERVICES = [
     icon: 'KeyRound',
     title: 'Lost Keys & Lock Changes',
     short: 'Lost, stolen or just moved in? A fresh set of locks means only you hold the keys.',
-    image: IMG.keys,
+    image: IMG.svcLostKeys,
     intro:
       'If keys have gone missing, you cannot know who may find them. Changing the lock cylinder is the quickest and most affordable way to make the old keys useless. We also re-key homes for new owners and tenants.',
     signs: [
@@ -84,7 +94,7 @@ export const SERVICES = [
     icon: 'Wrench',
     title: 'Snapped & Jammed Key Removal',
     short: 'Half a key stuck in the barrel? Stop turning and call us before it gets worse.',
-    image: IMG.key,
+    image: IMG.svcSnappedKey,
     intro:
       'Keys snap when a lock has been stiff for a while and extra force is applied at the wrong moment. The broken piece can usually be extracted cleanly, and the lock saved, if it is not pushed in further.',
     signs: [
@@ -106,7 +116,7 @@ export const SERVICES = [
     icon: 'ShieldCheck',
     title: 'uPVC & Composite Door Repair',
     short: 'Handle limp, door stiff or key will not turn? We repair multipoint locks and gearboxes.',
-    image: IMG.multipoint,
+    image: IMG.svcUpvcRepair,
     intro:
       'Most modern Bradford homes have a uPVC or composite door with a multipoint lock. The mechanism works hard every day. When it begins to fail the door can lock you out, or worse, lock you in.',
     signs: [
@@ -128,7 +138,7 @@ export const SERVICES = [
     icon: 'AppWindow',
     title: 'Window Lock & Handle Repair',
     short: 'Stuck, snapped or missing window locks fixed so every window opens and shuts securely.',
-    image: IMG.window,
+    image: IMG.svcWindowLock,
     intro:
       'Double-glazed windows depend on a small locking mechanism that can seize, snap or lose its key. We repair or replace window handles, locks and espagnolette bars, and fit restrictors where children are in the home.',
     signs: [
@@ -150,7 +160,7 @@ export const SERVICES = [
     icon: 'LockKeyhole',
     title: 'Anti-Snap Lock Upgrades',
     short: 'Standard euro cylinders can be snapped in seconds. Upgrade to a 3-star rated cylinder.',
-    image: IMG.antisnap,
+    image: IMG.svcAntisnap,
     intro:
       'Many uPVC and composite doors still use basic euro cylinders that can be snapped by an intruder. A TS007 3-star rated cylinder (or a 1-star with 2-star handles) is built to resist this attack and is often what insurers expect.',
     signs: [
@@ -172,7 +182,7 @@ export const SERVICES = [
     icon: 'KeySquare',
     title: 'Wooden Door Mortice & Night Latch',
     short: 'Traditional timber front and back doors secured with BS3621 5-lever locks.',
-    image: IMG.mortice,
+    image: IMG.svcMortice,
     intro:
       'Older terraces and stone cottages across Bradford often have solid timber doors. A British Standard 5-lever mortice deadlock, paired with a night latch, gives that classic door the strength insurers like to see.',
     signs: [
@@ -194,7 +204,7 @@ export const SERVICES = [
     icon: 'ShieldAlert',
     title: 'After a Break-In: Repair & Secure',
     short: 'Damaged door or window after an attempted entry? We make your home safe again, fast.',
-    image: IMG.handle,
+    image: IMG.svcBreakin,
     intro:
       'After a break-in, the first priority is making the house secure so you can sleep. We repair or replace damaged locks, frames and handles and can recommend upgrades so it is harder for it to happen twice.',
     signs: [

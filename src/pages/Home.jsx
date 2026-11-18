@@ -42,7 +42,7 @@ export default function Home() {
       <section className="section alt">
         <div className="wrap split">
           <Reveal className="split-img">
-            <img src={IMG.key} alt="Locksmith carefully working on a house door lock" loading="lazy" />
+            <img src={IMG.homeWhyUs} alt="Uniformed locksmith repairing a residential uPVC frame with tools" loading="lazy" />
             <div className="badge"><b>30–60</b><span>minute typical arrival across Bradford</span></div>
           </Reveal>
           <Reveal delay={0.1}>
@@ -128,7 +128,7 @@ export default function Home() {
             <Link className="btn btn-primary" to="/services/anti-snap-lock-upgrades">Anti-snap upgrades <ArrowRight size={18} /></Link>
           </Reveal>
           <Reveal className="split-img" delay={0.1}>
-            <img src={IMG.cylinder} alt="Fitting a new cylinder lock on a uPVC door" loading="lazy" />
+            <img src={IMG.homeSecurity} alt="Locksmith upgrading and fitting a high-security door lock" loading="lazy" />
           </Reveal>
         </div>
       </section>

@@ -17,7 +17,7 @@ export default function Contact() {
 
   return (
     <>
-      <PageBanner image={IMG.antisnap} title="Contact us" text="Call for emergencies. For anything else, send a message and we will get back to you." crumbs={[{ label: 'Contact' }]} />
+      <PageBanner image={IMG.bannerContact} title="Contact us" text="Call for emergencies. For anything else, send a message and we will get back to you." crumbs={[{ label: 'Contact' }]} />
       <section className="section">
         <div className="wrap contact">
           <div>

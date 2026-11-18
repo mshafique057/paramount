@@ -1,20 +1,16 @@
-/**
- * Central business configuration.
- * Replace the clearly marked placeholders before publishing.
- * Keep phoneHref/emailHref empty until real contact details are supplied.
- */
+// ------------------------------------------------------------------
+// EDIT HERE: swap the placeholder contact details before going live.
+// ------------------------------------------------------------------
 export const BUSINESS = {
   name: 'Paramount Locksmiths',
-  phoneDisplay: '01274 000000', // DUMMY (Bradford 01274 code + zeros) – replace in admin
-  phoneHref: 'tel:+441274000000', // DUMMY – must match phoneDisplay
-  email: 'hello@example.com', // DUMMY – replace in admin
-  emailHref: 'mailto:hello@example.com', // DUMMY – must match email
-  address: '1 Example Street, Bradford BD1 1AA', // DUMMY – replace in admin
-  serviceArea: 'Bradford',
-  hours: '24 hours a day, 7 days a week', // Owner's 24/7 claim – confirm wording in admin
-  mapEmbedUrl: 'https://www.google.com/maps?q=Bradford%2C%20UK&output=embed',
-  formEndpoint: '', // Leave empty to use the built-in enquiry form (/api/enquiry)
-  socialLinks: [],
+  tagline: '24/7 Home Locksmith Service',
+  phone: '01274 000000',
+  phoneHref: 'tel:01274000000',
+  whatsappHref: 'https://wa.me/447000000000',
+  email: 'hello@paramountlocksmiths.co.uk',
+  area: 'Bradford & West Yorkshire',
+  hours: 'Open 24 hours, 7 days a week',
+  response: '30–60 min'
 };
 
 export const IMG = {
@@ -26,172 +22,340 @@ export const IMG = {
   multipoint: '/uk_multipoint_handle.webp',
   antisnap: '/uk_antisnap_cylinder.webp',
   mortice: '/uk_mortice_lock.webp',
-  handle: '/uk_door_handle.webp',
+  handle: '/uk_door_handle.webp'
 };
 
 export const NAV = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
-  { to: '/areas', label: 'Areas covered' },
+  { to: '/areas', label: 'Areas' },
   { to: '/about', label: 'About' },
-  { to: '/faqs', label: 'FAQs' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/faq', label: 'FAQ' },
+  { to: '/contact', label: 'Contact' }
 ];
 
 export const SERVICES = [
   {
-    slug: 'emergency-home-lockouts', path: '/services/emergency-home-lockouts', icon: 'DoorOpen',
-    title: 'Emergency home lockouts', short: 'Locked out of your house or flat? Get help with a household door that will not open.',
-    image: IMG.door, alt: 'Contemporary UK composite front door with residential door furniture',
-    intro: 'Being unable to get into your own home is stressful. Whether the door has shut behind you, the key has gone missing or the lock has stopped working, we can assess the problem and explain the available options.',
-    problems: ['The door has closed and the keys are inside', 'Your key is missing or has been stolen', 'The key turns but the door will not open', 'The handle moves but the locking mechanism appears jammed'],
-    detail: 'The right approach depends on the door, lock and condition of the mechanism. We will explain the proposed work and its cost before carrying out any repair or replacement.'
+    slug: 'emergency-home-lockout',
+    icon: 'DoorOpen',
+    title: 'Emergency Home Lockout',
+    short: 'Shut out of your own house? We get you back in without drilling or damaging the door.',
+    image: IMG.door,
+    intro:
+      'Door pulled shut behind you, keys left on the kitchen side, or a lock that has simply stopped co-operating. Our locksmiths specialise in careful, damage-free entry to houses, bungalows and flats, at any hour.',
+    signs: [
+      'Keys are inside and the door has locked behind you',
+      'Key is lost, misplaced or was taken with a bag or coat',
+      'Handle lifts but the door will not open from outside',
+      'A child, pet or someone vulnerable is waiting inside'
+    ],
+    steps: [
+      'Call us and tell us the door type and your postcode.',
+      'We confirm a fixed price and an arrival window before leaving.',
+      'We open the door with non-destructive techniques and check the lock still works.',
+      'If the lock is worn or compromised, we can replace it on the spot.'
+    ],
+    note: 'We will ask for proof you live at the property (a letter, bill or photo ID) before starting. It protects you and your neighbours.'
   },
   {
-    slug: 'lock-changes-replacements', path: '/services/lock-changes-replacements', icon: 'KeyRound',
-    title: 'Lock changes & replacements', short: 'Replace worn, damaged or unsuitable household locks, including after a house move.',
-    image: IMG.cylinder, alt: 'Euro profile cylinder fitted into a UK uPVC door handle',
-    intro: 'A lock change may be useful after moving home, losing keys, or finding that an existing lock is worn or unreliable. We work with common residential door lock types and can help identify a suitable replacement.',
-    problems: ['You have moved into a new home', 'House keys have been lost or stolen', 'A lock is stiff, worn or damaged', 'You need a replacement for a household door'],
-    detail: 'The lock type and dimensions need to be checked before a replacement is selected. We can discuss the options for your door and explain any differences in specification.'
+    slug: 'lost-keys-lock-change',
+    icon: 'KeyRound',
+    title: 'Lost Keys & Lock Changes',
+    short: 'Lost, stolen or just moved in? A fresh set of locks means only you hold the keys.',
+    image: IMG.keys,
+    intro:
+      'If keys have gone missing, you cannot know who may find them. Changing the lock cylinder is the quickest and most affordable way to make the old keys useless. We also re-key homes for new owners and tenants.',
+    signs: [
+      'Keys lost outside the home or taken in a theft',
+      'You have just bought or rented and do not know who holds spares',
+      'A former partner, tenant or contractor still has a key',
+      'Existing locks are loose, worn or stiff to turn'
+    ],
+    steps: [
+      'We identify your cylinder size and door type.',
+      'We fit a new insurance-grade cylinder or lock body.',
+      'You receive fresh keys, tested on the door before we leave.',
+      'We show you how to spot a lock that needs attention in future.'
+    ],
+    note: 'Most lock changes are completed in under 45 minutes, using locks carried in the van.'
   },
   {
-    slug: 'upvc-composite-door-lock-repairs', path: '/services/upvc-composite-door-lock-repairs', icon: 'Wrench',
-    title: 'uPVC & composite door lock repairs', short: 'Help with faulty handles, euro cylinders and multipoint locking mechanisms.',
-    image: IMG.multipoint, alt: 'Multipoint locking hardware used in a UK residential door',
-    intro: 'uPVC and composite doors commonly use a euro profile cylinder alongside a multipoint locking mechanism. If the handle feels loose, the key will not turn or the door has become difficult to operate, the fault may be in the cylinder, gearbox, mechanism or door alignment.',
-    problems: ['The handle is loose or will not lift normally', 'The key is difficult to turn', 'The door catches against its frame', 'The multipoint mechanism no longer operates correctly'],
-    detail: 'We assess the components and explain whether a repair or replacement is appropriate. The full door does not necessarily need replacing when a lock component has failed.'
+    slug: 'snapped-key-removal',
+    icon: 'Wrench',
+    title: 'Snapped & Jammed Key Removal',
+    short: 'Half a key stuck in the barrel? Stop turning and call us before it gets worse.',
+    image: IMG.key,
+    intro:
+      'Keys snap when a lock has been stiff for a while and extra force is applied at the wrong moment. The broken piece can usually be extracted cleanly, and the lock saved, if it is not pushed in further.',
+    signs: [
+      'Part of the key is stuck inside the cylinder',
+      'The key bends or spins without turning the bolt',
+      'The key will not go in or come out',
+      'The lock has felt gritty or stiff for weeks'
+    ],
+    steps: [
+      'Please stop turning or forcing the key.',
+      'We extract the broken section using fine extraction tools.',
+      'We test the lock and cut a working replacement key if the lock is sound.',
+      'If the cylinder is damaged, we swap it for a stronger one.'
+    ],
+    note: 'Tip: spray-on grease or oil can clog a lock. Call us rather than lubricating a jammed barrel.'
   },
   {
-    slug: 'window-lock-repairs', path: '/services/window-lock-repairs', icon: 'AppWindow',
-    title: 'Residential window lock repairs', short: 'Repairs and replacements for household window handles and locking parts.',
-    image: IMG.window, alt: 'Key-operated locking handle on a white residential uPVC window',
-    intro: 'A stiff window handle, missing key or faulty locking point can make a household window difficult to secure or use. We can assess common residential window lock and handle problems.',
-    problems: ['A key-operated window handle will not turn', 'The handle is loose or damaged', 'The window will not close or lock correctly', 'A window lock key has gone missing'],
-    detail: 'Window hardware varies by frame and manufacturer. A clear description or photograph can help us understand the type of handle or lock fitted before arranging an assessment.'
+    slug: 'upvc-composite-door-repair',
+    icon: 'ShieldCheck',
+    title: 'uPVC & Composite Door Repair',
+    short: 'Handle limp, door stiff or key will not turn? We repair multipoint locks and gearboxes.',
+    image: IMG.multipoint,
+    intro:
+      'Most modern Bradford homes have a uPVC or composite door with a multipoint lock. The mechanism works hard every day. When it begins to fail the door can lock you out, or worse, lock you in.',
+    signs: [
+      'The handle feels loose, floppy or will not lift',
+      'You need to slam or lift the door to lock it',
+      'The key turns but the hooks and bolts do not move',
+      'The door has dropped and catches on the frame'
+    ],
+    steps: [
+      'We diagnose whether the fault is the cylinder, gearbox or door alignment.',
+      'We repair or replace the failed part with a matching component.',
+      'Hinges and keeps are adjusted so the door closes smoothly.',
+      'Everything is tested from inside and outside before we leave.'
+    ],
+    note: 'Replacing a gearbox is often far cheaper than replacing the door. We will tell you honestly which makes sense.'
   },
   {
-    slug: 'lost-stolen-house-keys', path: '/services/lost-stolen-house-keys', icon: 'Key',
-    title: 'Lost or stolen house keys', short: 'Discuss practical options when household keys have gone missing.',
-    image: IMG.keys, alt: 'Set of household keys on a neutral surface',
-    intro: 'If house keys are lost or stolen, it is sensible to consider who could identify the property and whether someone else may have access. Depending on the circumstances, changing the relevant lock may be appropriate.',
-    problems: ['A set of house keys has been misplaced', 'Keys were taken with a bag or personal belongings', 'You are unsure who may have a copy', 'You have recently moved and do not know how many keys exist'],
-    detail: 'We can discuss the lock type and replacement options. If keys were stolen with anything that identifies your address, mention this when you get in touch.'
+    slug: 'window-lock-repair',
+    icon: 'AppWindow',
+    title: 'Window Lock & Handle Repair',
+    short: 'Stuck, snapped or missing window locks fixed so every window opens and shuts securely.',
+    image: IMG.window,
+    intro:
+      'Double-glazed windows depend on a small locking mechanism that can seize, snap or lose its key. We repair or replace window handles, locks and espagnolette bars, and fit restrictors where children are in the home.',
+    signs: [
+      'The window handle will not turn or has snapped off',
+      'You have lost the window key',
+      'The window will not close fully against the frame',
+      'You would like a child-safe restrictor fitted'
+    ],
+    steps: [
+      'We inspect the window, handle and locking points.',
+      'We source a matching lock, handle or hinge for your frame.',
+      'We fit and align the new part and test every locking point.',
+      'Optional: add restrictors and extra keys for the whole house.'
+    ],
+    note: 'Windows are a common way in for opportunists. Check every ground floor lock works, not just the front door.'
   },
   {
-    slug: 'broken-stuck-keys', path: '/services/broken-stuck-keys', icon: 'KeyRound',
-    title: 'Broken keys & keys stuck in locks', short: 'Help when a key snaps, becomes trapped or will not move freely.',
-    image: IMG.key, alt: 'Residential locksmith attending to a key problem at a door lock',
-    intro: 'A key that becomes trapped or breaks in a household lock can prevent the door from being used normally. Avoid forcing the key, as extra pressure can make the problem harder to resolve.',
-    problems: ['A key has snapped in the lock', 'The key is stuck and will not come out', 'The key will not insert fully', 'The lock has become stiff or unreliable'],
-    detail: 'The lock may be reusable if its internal parts are still in good condition. If it has been damaged, a replacement may be the more suitable option.'
+    slug: 'anti-snap-lock-upgrades',
+    icon: 'LockKeyhole',
+    title: 'Anti-Snap Lock Upgrades',
+    short: 'Standard euro cylinders can be snapped in seconds. Upgrade to a 3-star rated cylinder.',
+    image: IMG.antisnap,
+    intro:
+      'Many uPVC and composite doors still use basic euro cylinders that can be snapped by an intruder. A TS007 3-star rated cylinder (or a 1-star with 2-star handles) is built to resist this attack and is often what insurers expect.',
+    signs: [
+      'Your cylinder sits proud of the handle plate',
+      'The lock is unbranded or has no kitemark',
+      'Your insurer asked about approved locks',
+      'You want better peace of mind at night'
+    ],
+    steps: [
+      'We measure the cylinder and check how far it protrudes.',
+      'We recommend a rated cylinder in a finish that suits your handle.',
+      'We fit it flush so there is nothing to grip or snap.',
+      'You receive keys and a security card for your records.'
+    ],
+    note: 'Ask your insurer which standard they require. We are happy to provide a receipt for your records.'
   },
   {
-    slug: 'jammed-locks-doors', path: '/services/jammed-locks-doors', icon: 'LockKeyhole',
-    title: 'Jammed locks & doors that will not open', short: 'Assessment of household doors that are stuck, jammed or refusing to lock.',
-    image: IMG.handle, alt: 'Close-up of a residential door handle and cylinder',
-    intro: 'A household door can become difficult to open or close because of a worn lock, a failed mechanism or a change in door alignment. The symptoms can help identify which part needs attention.',
-    problems: ['The door is stuck shut', 'The lock turns but the door remains closed', 'The door needs unusual pressure to close', 'The handle or locking points feel jammed'],
-    detail: 'Please do not force a jammed handle or key. We can assess the door and explain the appropriate repair or replacement options.'
+    slug: 'mortice-night-latch-fitting',
+    icon: 'KeySquare',
+    title: 'Wooden Door Mortice & Night Latch',
+    short: 'Traditional timber front and back doors secured with BS3621 5-lever locks.',
+    image: IMG.mortice,
+    intro:
+      'Older terraces and stone cottages across Bradford often have solid timber doors. A British Standard 5-lever mortice deadlock, paired with a night latch, gives that classic door the strength insurers like to see.',
+    signs: [
+      'Your timber door only has a basic latch',
+      'The mortice lock is worn, loose or sticky',
+      'You have lost the key to a mortice lock',
+      'You need a lock cut into a new or replaced door'
+    ],
+    steps: [
+      'We check the door thickness and frame condition.',
+      'We fit a BS3621 mortice lock and, if wanted, a night latch.',
+      'We add hinge bolts or a reinforced keep where needed.',
+      'We finish with a clean, tidy look that suits the door.'
+    ],
+    note: 'We can match brass, chrome or black finishes to keep period doors looking right.'
   },
   {
-    slug: 'moving-home-lock-changes', path: '/services/moving-home-lock-changes', icon: 'House',
-    title: 'Moving-home lock changes', short: 'Review household locks when you move into a new property.',
-    image: IMG.mortice, alt: 'Traditional mortice lock fitted to a timber residential door',
-    intro: 'When you move home, you may not know how many copies of the existing keys are still in circulation. Reviewing the front and back door locks is a straightforward way to understand what is fitted and decide whether a change is needed.',
-    problems: ['You have completed a house purchase', 'You have moved into a rented property', 'Previous occupants may still have spare keys', 'You want to review the locks on timber or modern doors'],
-    detail: 'Different doors use different lock types. We can identify the existing hardware and discuss suitable replacements for the doors in your home.'
-  },
-];
-
-export const FAQS = [
-  { q: 'Do you provide residential locksmith services in Bradford?', a: 'The service is intended for household doors, locks and windows in Bradford. Please contact us with your postcode and the issue so the service area can be confirmed.' },
-  { q: 'Can you help if I am locked out of my home?', a: 'Yes. We can discuss a home lockout involving a front door, back door or flat entrance. The available options depend on the door and lock fitted.' },
-  { q: 'Can you replace a lock after I have lost my keys?', a: 'Yes. We can identify the type of household lock and explain replacement options. If keys were stolen with anything that identifies your address, mention that when you contact us.' },
-  { q: 'Can you repair uPVC and composite door locks?', a: 'Yes. The service includes common uPVC and composite door lock issues, including euro cylinders, handles, gearboxes and multipoint mechanisms.' },
-  { q: 'Do you repair window locks?', a: 'Residential window lock and handle repairs or replacements are included. The correct part depends on the window and existing hardware.' },
-  { q: 'Can you help with a snapped key?', a: 'Yes. We can assess a key that has snapped or become stuck in a household lock. Avoid forcing it further before the lock has been checked.' },
-  { q: 'How much will the work cost?', a: 'The cost depends on the lock type, the fault and any parts required. Contact us with a description or photograph of the door or window so the job can be discussed before work is agreed.' },
-  { q: 'Are you available 24 hours a day?', a: 'Yes. We offer 24/7 residential locksmith help across Bradford for urgent household lock problems. Call us at any time to talk through what you need.' },
-  { q: 'Do you work on cars or business premises?', a: 'No. This website covers residential household locks, doors and windows only.' },
+    slug: 'break-in-repair',
+    icon: 'ShieldAlert',
+    title: 'After a Break-In: Repair & Secure',
+    short: 'Damaged door or window after an attempted entry? We make your home safe again, fast.',
+    image: IMG.handle,
+    intro:
+      'After a break-in, the first priority is making the house secure so you can sleep. We repair or replace damaged locks, frames and handles and can recommend upgrades so it is harder for it to happen twice.',
+    signs: [
+      'Forced door, frame or lock after a burglary or attempt',
+      'Broken window handle or lock',
+      'Keys may have been taken during the break-in',
+      'You need the home secure again tonight'
+    ],
+    steps: [
+      'We assess the damage and make the property safe first.',
+      'We replace broken locks, cylinders and handles.',
+      'We reinforce weak points with stronger keeps and plates.',
+      'We give you a written note of the work for your insurer.'
+    ],
+    note: 'Report the incident to the police and keep the crime reference. We can supply an invoice and photos for your claim.'
+  }
 ];
 
 export const PROBLEMS = [
-  { id: 'keys', title: 'Lost or stolen keys', text: 'Understand whether a lock change is appropriate and which household locks may need attention.', image: IMG.keys, link: '/services/lost-stolen-house-keys' },
-  { id: 'jam', title: 'A door that will not open', text: 'A jammed lock or failed mechanism can stop a door from opening or closing as it should.', image: IMG.door, link: '/services/jammed-locks-doors' },
-  { id: 'upvc', title: 'A faulty uPVC handle', text: 'Loose handles, stiff keys and multipoint faults can often be traced to a specific component.', image: IMG.multipoint, link: '/services/upvc-composite-door-lock-repairs' },
-  { id: 'window', title: 'A window that will not lock', text: 'Household window handles and locking parts can be assessed for repair or replacement.', image: IMG.window, link: '/services/window-lock-repairs' },
+  {
+    id: 'locked-out',
+    label: 'Locked out',
+    title: 'You are locked out of your home',
+    text: 'Do not force the door or break a window. Forcing can damage the lock, and glass or frames are costly to repair. Call us with your postcode and door type and we will give you a fixed price and an arrival time.',
+    tips: ['Check for a spare key with a neighbour', 'Stay somewhere safe and warm', 'Have proof of address ready']
+  },
+  {
+    id: 'snapped-key',
+    label: 'Snapped key',
+    title: 'The key has snapped in the lock',
+    text: 'Leave the broken piece where it is. Pushing or pulling can wedge it deeper. We can usually extract it and often save the lock itself.',
+    tips: ['Do not add oil or glue', 'Keep both halves of the key', 'Do not try to turn the cylinder']
+  },
+  {
+    id: 'handle-limp',
+    label: 'Door will not lock',
+    title: 'Your door will not lock or the handle is limp',
+    text: 'This usually points to a worn gearbox or cylinder in a uPVC or composite door. Do not lock it by lifting hard on the handle every night. Let us repair it before it fails fully.',
+    tips: ['Note if the key turns freely', 'Check whether the door has dropped', 'Photograph the lock edge for us']
+  },
+  {
+    id: 'window',
+    label: 'Window stuck',
+    title: 'A window lock is stuck or the key is missing',
+    text: 'A seized window lock is easy to damage. We can free it, repair it or fit a new lock and handle in a visit, with spare keys supplied.',
+    tips: ['Do not hit or pry the sash', 'Note the frame colour and make', 'Ask about child restrictors']
+  }
 ];
 
-
-// ---------- Homepage copy (editable in the admin dashboard) ----------
-export const HOME = {
-  hero: {
-    eyebrow: '24/7 residential locksmith · Bradford',
-    headline: 'Home locks, done properly.',
-    highlight: 'done properly.',
-    sub: 'Lock changes, repairs, lost-key help and emergency lockout support for houses and flats across Bradford. Clear advice, tidy work and no unnecessary replacements.',
-    ctaPrimary: 'Call us now',
-    ctaSecondary: 'See our services',
-    image: '/uk_composite_front_door.webp',
-    alt: 'Modern UK composite residential front door',
-  },
-  // Extra slides for the dark homepage slider (shown after the hero above).
-  extraSlides: [
-    { eyebrow: 'Lock changes · Bradford', headline: 'New locks, fitted properly.', highlight: 'fitted properly.', sub: 'Anti-snap cylinders, mortice locks and uPVC or composite door locks, explained before any work starts.', ctaPrimary: 'Call us now', image: '/uk_upvc_cylinder_lock.webp', alt: 'Euro profile cylinder lock for a UK uPVC door' },
-    { eyebrow: 'Repairs · Bradford', headline: 'Stiff keys and loose handles?', highlight: 'loose handles?', sub: 'Repairs for household doors and windows, starting with the likely cause so you know what the job involves.', ctaPrimary: 'Call us now', image: '/uk_multipoint_handle.webp', alt: 'Multipoint locking handle on a UK residential door' },
-  ],
-  // Plus points shown under the slider. Owner to confirm each point before publishing.
-  plusPoints: [
-    { title: '24/7 emergency help', text: 'Call at any time about an urgent household lock problem.' },
-    { title: 'No call-out fee', text: 'Asking us to come out is not charged on its own.' },
-    { title: 'Price agreed first', text: 'We talk through the cost before any work starts.' },
-    { title: 'Clear options', text: 'We explain the choices so you can decide what suits your home.' },
-  ],
-  ticker: ['Home lockouts', 'Lock changes', 'uPVC repairs', 'Window locks', 'Broken keys', 'Lost house keys', 'Anti-snap cylinders'],
-  process: {
-    heading: 'From first call to finished door',
-    steps: [
-      { title: 'Tell us what is happening', desc: 'Call or send a message describing the problem: a lockout, a broken lock, a move or a worry about security.' },
-      { title: 'We agree the job', desc: 'We talk you through the likely cause and the options, so you know what the work involves before anything starts.' },
-      { title: 'We do the work', desc: 'Our engineer arrives, works carefully and keeps your home tidy while they are there.' },
-      { title: 'We check it with you', desc: 'Before we leave, we test every lock and key together so you can see it working.' },
-    ],
-  },
-  about: {
-    heading: 'Quiet, careful work in your home',
-    paragraphs: [
-      'Paramount Locksmiths looks after homes in Bradford. A lock is about trust, so whoever works on your door should be respectful, tidy and clear about what they are doing.',
-      'We focus on residential work only, so every visit is about the doors, windows and locks in your home. We explain the options, let you choose, and leave the place as we found it.',
-    ],
-  },
-};
-
-// ---------- Blog (editable in the admin dashboard) ----------
-export const BLOG = [
+export const ZONES = [
   {
-    slug: 'signs-your-front-door-lock-needs-replacing',
-    title: 'Signs your front door lock needs replacing',
-    date: '2026-11-01',
-    excerpt: 'A stiff key or a door that will not latch can mean more than a worn spring. Here is what to look for.',
-    image: '',
-    body: [
-      'A lock rarely fails without warning. The key starts to catch, you have to lift the door to turn it, or the bolt does not sit fully in the frame. Each of these is worth taking seriously.',
-      'Look for wear on the key itself, bright or rounded edges, and any gap between the lock and the door. Check whether the lock is loose when you turn the key. These small signs often point to a worn cylinder that is easier to replace than to keep fixing.',
-      'If you are not sure, call us and we can take a look. Often the answer is a simple repair, and if it is not, we will explain your options clearly before any work starts.',
-    ],
+    id: 'city',
+    icon: 'Building2',
+    name: 'Bradford City & Inner Suburbs',
+    time: '20–40 min',
+    note: 'Our home patch, with vans based close by.',
+    areas: [
+      { name: 'City Centre', code: 'BD1' }, { name: 'Undercliffe', code: 'BD3' }, { name: 'Bowling', code: 'BD4' },
+      { name: 'Little Horton', code: 'BD5' }, { name: 'Great Horton', code: 'BD7' }, { name: 'Manningham', code: 'BD8' },
+      { name: 'Girlington', code: 'BD8' }, { name: 'Heaton', code: 'BD9' }, { name: 'Frizinghall', code: 'BD9' }
+    ]
   },
   {
-    slug: 'simple-ways-to-make-your-home-harder-to-enter',
-    title: 'Simple ways to make your home harder to enter',
-    date: '2026-11-10',
-    excerpt: 'Most entry happens through the easiest door or window. A few small changes can close those gaps.',
-    image: '',
-    body: [
-      'Start with the doors people overlook: the back door, the side gate and the garage. Make sure each one has a lock that matches the job and that the frame is solid.',
-      'Windows matter too. Restrictors let you ventilate safely, and good locks on ground-floor windows make a real difference. Keep spare keys out of sight and away from letterboxes.',
-      'If you would like a second pair of eyes, ask us for a home security look around. We will point out what we see, and you decide what is worth doing.',
-    ],
+    id: 'north',
+    icon: 'Trees',
+    name: 'North & Aire Valley',
+    time: '30–50 min',
+    note: 'Villages and towns along the Aire.',
+    areas: [
+      { name: 'Eccleshill', code: 'BD2' }, { name: 'Idle', code: 'BD10' }, { name: 'Thackley', code: 'BD10' },
+      { name: 'Shipley', code: 'BD18' }, { name: 'Saltaire', code: 'BD18' }, { name: 'Baildon', code: 'BD17' },
+      { name: 'Bingley', code: 'BD16' }, { name: 'Keighley', code: 'BD21' }, { name: 'Ilkley', code: 'LS29' }
+    ]
   },
+  {
+    id: 'south',
+    icon: 'Home',
+    name: 'South & West Bradford',
+    time: '30–50 min',
+    note: 'Estates, terraces and hillside villages.',
+    areas: [
+      { name: 'Wibsey', code: 'BD6' }, { name: 'Low Moor', code: 'BD12' }, { name: 'Wyke', code: 'BD12' },
+      { name: 'Clayton', code: 'BD14' }, { name: 'Allerton', code: 'BD15' }, { name: 'Thornton', code: 'BD13' },
+      { name: 'Queensbury', code: 'BD13' }, { name: 'Cleckheaton', code: 'BD19' }
+    ]
+  },
+  {
+    id: 'nearby',
+    icon: 'MapPinned',
+    name: 'Nearby West Yorkshire Towns',
+    time: '45–75 min',
+    note: 'Call first and we will confirm availability.',
+    areas: [
+      { name: 'Halifax', code: 'HX1' }, { name: 'Pudsey', code: 'LS28' }, { name: 'Leeds', code: 'LS1' }, { name: 'Huddersfield', code: 'HD1' }
+    ]
+  }
+];
+
+export const AREAS = ZONES.flatMap((z) => z.areas);
+
+export const REVIEWS = [
+  {
+    name: 'Hannah R.',
+    place: 'Heaton',
+    text: 'Locked out after the school run with a toddler in tow. He was with us in under an hour, got the door open without a scratch and was lovely with my little one.'
+  },
+  {
+    name: 'Imran K.',
+    place: 'Manningham',
+    text: 'Our uPVC handle had gone floppy for weeks. He explained it was the gearbox, not the whole door, fixed it the same visit and saved us a fortune.'
+  },
+  {
+    name: 'Susan & Paul T.',
+    place: 'Baildon',
+    text: 'Moved into an older house and wanted every lock changed. Neat, tidy, clear on price from the first call and he left everything cleaner than he found it.'
+  },
+  {
+    name: 'Daniel W.',
+    place: 'Thornton',
+    text: 'Key snapped at 11pm. He turned up, extracted it and had me inside in minutes. Fair price and no fuss at all.'
+  }
+];
+
+export const FAQS = [
+  {
+    q: 'How quickly can you get to my home?',
+    a: 'For emergencies we aim to be with you within 30 to 60 minutes across most of Bradford. If it is not urgent, we will book a slot that suits you.'
+  },
+  {
+    q: 'Do you quote before you come out?',
+    a: 'Yes. Give us your postcode and door type and we will agree a fixed price before we set off. If what we find on the day is very different from what you described, we explain why before doing anything.'
+  },
+  {
+    q: 'Will you damage my door getting in?',
+    a: 'Almost never. We use non-destructive entry techniques and only recommend drilling or replacing a lock when it is genuinely the only option, and only with your agreement.'
+  },
+  {
+    q: 'Do you work on homes only?',
+    a: 'Yes, we focus on houses, bungalows, flats and cottages. We do not take on shops, offices or other commercial premises, which keeps us fast and focused for homeowners and tenants.'
+  },
+  {
+    q: 'Do I need to show proof I live there?',
+    a: 'We will ask for something showing your name and address, like a utility bill, a letter or photo ID. It is a standard safeguard that protects you.'
+  },
+  {
+    q: 'What locks do you fit?',
+    a: 'Insurance-approved cylinders and locks from well-known brands, including TS007 3-star anti-snap cylinders and BS3621 5-lever mortice locks for timber doors.'
+  },
+  {
+    q: 'Is the work guaranteed?',
+    a: 'Yes. Locks and parts we fit come with a 12-month guarantee, and our workmanship is covered too.'
+  },
+  {
+    q: 'How can I pay?',
+    a: 'Card or cash on completion. You will have an itemised receipt for your records or your insurer.'
+  }
+];
+
+export const PROMISES = [
+  { icon: 'Clock', title: 'Fast local response', text: 'Based in Bradford with vans stocked for most home lock jobs, so we are quick to arrive and quick to finish.' },
+  { icon: 'PoundSterling', title: 'Fixed price upfront', text: 'You know the cost before we leave, with no pressure and no surprise extras at the door.' },
+  { icon: 'BadgeCheck', title: 'Vetted & insured', text: 'DBS-checked locksmiths, fully insured and trained to current British Standards.' },
+  { icon: 'ShieldCheck', title: '12-month guarantee', text: 'Locks and parts we fit are guaranteed, so you are covered long after we have gone.' }
 ];

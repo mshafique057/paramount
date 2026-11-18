@@ -1,22 +1,33 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ADMIN_PATH } from './config.js';
-import PublicLayout from './components/PublicLayout.jsx';
-import HomePage from './pages/HomePage.jsx';
-import BlogPage from './pages/BlogPage.jsx';
-import BlogPostPage from './pages/BlogPostPage.jsx';
+import { Header, Footer, FloatingBits } from './components/Layout.jsx';
+import Home from './pages/Home.jsx';
+import Services from './pages/Services.jsx';
+import ServiceDetail from './pages/ServiceDetail.jsx';
+import Areas from './pages/Areas.jsx';
+import About from './pages/About.jsx';
+import FAQ from './pages/FAQ.jsx';
+import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
-import AdminApp from './admin/AdminApp.jsx';
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<PublicLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="blog" element={<BlogPage />} />
-        <Route path="blog/:slug" element={<BlogPostPage />} />
-      </Route>
-      <Route path={ADMIN_PATH} element={<AdminApp />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/areas" element={<Areas />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <FloatingBits />
+    </>
   );
 }

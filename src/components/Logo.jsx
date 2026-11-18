@@ -1,7 +1,10 @@
 import React from 'react';
-import { BUSINESS } from '../data.js';
 
-// Transparent PNG logo. It sits directly on the cream page, so no background chip is needed.
+// Paramount logo: transparent PNG (public/logo.png). The footer wraps it in a light chip so it stays readable on black.
+export function LogoMark({ size = 52 }) {
+  return <img src="/logo.png" alt="Paramount Locksmiths logo" width={size * 3} height={Math.round(size * 3 * 537 / 1400)} className="logo-mark" />;
+}
+
 export default function Logo() {
-  return <img className="brand-logo" src="/logo.png" alt={BUSINESS.name} width="1400" height="434" />;
+  return <span className="logo"><img src="/logo.png" alt="Paramount Locksmiths" width="1400" height="537" className="logo-img" /></span>;
 }

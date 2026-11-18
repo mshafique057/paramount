@@ -1,9 +1,28 @@
 import React from 'react';
-import { SERVICES } from '../data.js';
-import { useTitle, PageIntro, CtaBand, SectionHeading } from '../components/ui.jsx';
+import { BadgeCheck, Clock, PoundSterling, ShieldCheck } from 'lucide-react';
+import { SERVICES, IMG } from '../data.js';
+import { PageBanner, CtaBand, useTitle } from '../components/ui.jsx';
 import ServiceCard from '../components/ServiceCard.jsx';
+
 export default function Services() {
-  useTitle('Residential Locksmith Services in Bradford | Paramount Locksmiths', 'Explore household lock, door and window locksmith services in Bradford.');
-  return <><PageIntro title="Residential locksmith services" text="Support for the locks, doors and windows around your home in Bradford." image="/uk_multipoint_handle.webp" />
-    <section className="section"><div className="container"><SectionHeading eyebrow="Household lock problems" title="Choose the service you need" text="If you are not sure which service fits, describe the problem and the type of door or window when you contact us." /><div className="service-grid">{SERVICES.map((s, i) => <ServiceCard key={s.slug} service={s} index={i} />)}</div></div></section><CtaBand /></>;
+  useTitle('Home Locksmith Services in Bradford | Paramount Locksmiths', 'Lockout entry, lost keys, snapped key removal, uPVC door and window lock repair, anti-snap upgrades and break-in repairs for Bradford homes.');
+  return (
+    <>
+      <PageBanner image={IMG.key} title="Home locksmith services" text="Residential door and window lock help for houses, bungalows, flats and cottages across Bradford." crumbs={[{ label: 'Services' }]} />
+      <section className="section">
+        <div className="wrap">
+          <div className="svc-intro">
+            <span><Clock size={19} /> 30–60 min emergency response</span>
+            <span><PoundSterling size={19} /> Fixed price before we travel</span>
+            <span><BadgeCheck size={19} /> DBS checked &amp; insured</span>
+            <span><ShieldCheck size={19} /> 12-month guarantee</span>
+          </div>
+          <div className="grid g4">
+            {SERVICES.map((s, i) => <ServiceCard key={s.slug} s={s} i={i} />)}
+          </div>
+        </div>
+      </section>
+      <CtaBand />
+    </>
+  );
 }

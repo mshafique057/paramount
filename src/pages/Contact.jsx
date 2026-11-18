@@ -1,80 +1,68 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Phone, Clock3, Send, CheckCircle2 } from 'lucide-react';
-import { BUSINESS, SERVICES } from '../data.js';
-import { useTitle, PageIntro } from '../components/ui.jsx';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Check } from 'lucide-react';
+import { BUSINESS, SERVICES, IMG } from '../data.js';
+import { PageBanner, useTitle } from '../components/ui.jsx';
 
 export default function Contact() {
-  useTitle(`Contact | ${BUSINESS.name}`, `Contact ${BUSINESS.name} about residential lock, door and window problems in Bradford.`);
-  const [status, setStatus] = useState(''); // '' | sent | error
-  const [message, setMessage] = useState('');
-  const [busy, setBusy] = useState(false);
+  useTitle('Contact | Paramount Locksmiths 24/7', 'Call, WhatsApp or request a callback from your local Bradford home locksmith.');
+  const [done, setDone] = useState(null);
 
-  async function submit(e) {
+  const submit = (e) => {
     e.preventDefault();
-    setStatus('');
-    setBusy(true);
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-    try {
-      const endpoint = BUSINESS.formEndpoint || '/api/enquiry';
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
-      });
-      const result = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(result.error || 'Submission failed');
-      setStatus('sent');
-      setMessage('Thank you. Your enquiry has been received and we will be in touch.');
-      form.reset();
-    } catch (err) {
-      setStatus('error');
-      setMessage(err.message || 'We could not send your enquiry. Please try again later.');
-    } finally {
-      setBusy(false);
-    }
-  }
+    const fd = new FormData(e.target);
+    // Demo only: connect to Formspree / EmailJS / your API before going live.
+    setDone({ name: fd.get('name') });
+    e.target.reset();
+  };
 
-  return <>
-    <PageIntro title="Contact" text="Tell us about the household lock, door or window problem you need help with in Bradford." />
-    <section className="section">
-      <div className="container contact-layout">
-        <div className="contact-copy">
-          <span className="eyebrow">Get in touch</span>
-          <h2>Let's understand what has happened.</h2>
-          <p>Share your postcode, the type of door or window and a brief description of the issue.</p>
-          <div className="contact-detail"><Phone /><div><strong>Telephone</strong>{BUSINESS.phoneHref ? <a href={BUSINESS.phoneHref}>{BUSINESS.phoneDisplay}</a> : <span>{BUSINESS.phoneDisplay}</span>}</div></div>
-          <div className="contact-detail"><Mail /><div><strong>Email</strong>{BUSINESS.emailHref ? <a href={BUSINESS.emailHref}>{BUSINESS.email}</a> : <span>{BUSINESS.email}</span>}</div></div>
-          <div className="contact-detail"><MapPin /><div><strong>Address</strong><span>{BUSINESS.address}</span></div></div>
-          <div className="contact-detail"><Clock3 /><div><strong>Opening hours</strong><span>{BUSINESS.hours}</span></div></div>
+  return (
+    <>
+      <PageBanner image={IMG.antisnap} title="Contact us" text="Call for emergencies. For anything else, send a message and we will get back to you." crumbs={[{ label: 'Contact' }]} />
+      <section className="section">
+        <div className="wrap contact">
+          <div>
+            <span className="eyebrow">Get in touch</span>
+            <h2>We are on call, 24 hours a day</h2>
+            <p>For lockouts and urgent lock failures, calling is always fastest. You will reach a local locksmith, not a call centre.</p>
+            <div className="info-row"><span className="ic"><Phone size={22} /></span><div><b>Call</b><a href={BUSINESS.phoneHref}>{BUSINESS.phone}</a></div></div>
+            <div className="info-row"><span className="ic"><MessageCircle size={22} /></span><div><b>WhatsApp</b><a href={BUSINESS.whatsappHref}>Message us</a></div></div>
+            <div className="info-row"><span className="ic"><Mail size={22} /></span><div><b>Email</b><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></div></div>
+            <div className="info-row"><span className="ic"><MapPin size={22} /></span><div><b>Coverage</b>{BUSINESS.area}</div></div>
+            <div className="info-row"><span className="ic"><Clock size={22} /></span><div><b>Hours</b>{BUSINESS.hours}</div></div>
+          </div>
+          <div className="form">
+            {done ? (
+              <div className="success">
+                <div className="ok"><Check size={34} /></div>
+                <h3>Thanks{done.name ? `, ${done.name}` : ''}!</h3>
+                <p>We have your request and will call you back shortly. If it is urgent, please phone us on {BUSINESS.phone}.</p>
+                <button className="btn btn-outline" onClick={() => setDone(null)}>Send another request</button>
+              </div>
+            ) : (
+              <form onSubmit={submit}>
+                <h3>Request a callback</h3>
+                <div className="row2">
+                  <div className="field"><label htmlFor="name">Your name</label><input id="name" name="name" required placeholder="Full name" /></div>
+                  <div className="field"><label htmlFor="phone">Phone number</label><input id="phone" name="phone" type="tel" required placeholder="07..." /></div>
+                </div>
+                <div className="row2">
+                  <div className="field"><label htmlFor="postcode">Postcode</label><input id="postcode" name="postcode" placeholder="e.g. BD9 4AB" /></div>
+                  <div className="field">
+                    <label htmlFor="service">What do you need?</label>
+                    <select id="service" name="service" defaultValue="">
+                      <option value="" disabled>Select a service</option>
+                      {SERVICES.map((s) => (<option key={s.slug}>{s.title}</option>))}
+                      <option>Something else</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="field"><label htmlFor="msg">Tell us a little more</label><textarea id="msg" name="msg" rows="4" placeholder="Type of door, what has happened..." /></div>
+                <button className="btn btn-primary" type="submit" style={{ width: '100%' }}>Send request</button>
+              </form>
+            )}
+          </div>
         </div>
-
-        <div className="contact-form-wrap">
-          <form className="contact-form" onSubmit={submit}>
-            <h2>Describe your lock problem</h2>
-            <p>Fields marked with * are required.</p>
-            {/* Honeypot: hidden from people, left empty by real visitors */}
-            <input type="text" name="website" tabIndex="-1" autoComplete="off" style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true" />
-            <div className="form-two">
-              <label>Your name *<input name="name" autoComplete="name" required minLength="2" maxLength="100" /></label>
-              <label>Phone or email *<input name="contact" required minLength="5" maxLength="150" /></label>
-            </div>
-            <label>Bradford postcode<input name="postcode" autoComplete="postal-code" maxLength="12" placeholder="e.g. BD1 1AA" /></label>
-            <label>Service needed
-              <select name="service" defaultValue="">
-                <option value="">Select a service</option>
-                {SERVICES.map((s) => <option key={s.slug} value={s.title}>{s.title}</option>)}
-                <option value="Not sure">I am not sure</option>
-              </select>
-            </label>
-            <label>Message *<textarea name="message" required minLength="10" maxLength="2000" rows="5" placeholder="Tell us what has happened and what type of door or window is involved." /></label>
-            <button className="btn btn-dark submit-button" type="submit" disabled={busy}>{busy ? 'Sending…' : 'Send enquiry'} <Send size={17} /></button>
-            {status === 'sent' && <p className="form-state form-success" role="status"><CheckCircle2 size={17} /> {message}</p>}
-            {status === 'error' && <p className="form-state form-error" role="alert">{message}</p>}
-            <small>Information you send is used to respond to your enquiry, in line with the <a href="/privacy-policy">privacy policy</a>.</small>
-          </form>
-        </div>
-      </div>
-    </section>
-  </>;
+      </section>
+    </>
+  );
 }

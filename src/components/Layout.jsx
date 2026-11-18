@@ -1,73 +1,125 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Phone, Mail, MapPin, Menu, X, ArrowUp, ChevronRight, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Menu, X, MessageCircle, ArrowUp, ChevronRight } from 'lucide-react';
 import { BUSINESS, NAV, SERVICES } from '../data.js';
 import Logo from './Logo.jsx';
 
-function ContactPhone({ className = 'button button-amber' }) {
-  return BUSINESS.phoneHref
-    ? <a className={className} href={BUSINESS.phoneHref}><Phone size={17} /> Call for help</a>
-    : <Link className={className} to="/contact"><Phone size={17} /> Contact us</Link>;
+function Brand({ onClick }) {
+  return (
+    <Link to="/" className="brand" onClick={onClick} aria-label={BUSINESS.name}>
+      <Logo />
+    </Link>
+  );
 }
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
-  useEffect(() => { setOpen(false); window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]);
+
+  useEffect(() => { setOpen(false); window.scrollTo({ top: 0 }); }, [pathname]);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const on = () => setScrolled(window.scrollY > 12);
+    on();
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
   }, []);
-  return <>
-    <div className="topline"><div className="container topline-inner">
-      <span><MapPin size={14} /> Residential locksmith in {BUSINESS.serviceArea}</span>
-      <span><Clock size={14} /> {BUSINESS.hours}</span>
-    </div></div>
-    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="container header-inner">
-        <Link to="/" className="brand" aria-label={`${BUSINESS.name} home`}><Logo /></Link>
-        <nav className="desktop-nav" aria-label="Main navigation">
-          {NAV.map(item => <NavLink key={item.to} to={item.to} end={item.to === '/'}>{item.label}</NavLink>)}
-        </nav>
-        <div className="header-actions"><ContactPhone />
-          <button className="menu-toggle" type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(v => !v)}>{open ? <X /> : <Menu />}</button>
+
+  return (
+    <>
+      <div className="topbar">
+        <div className="wrap">
+          <span className="live"><i className="dot" /> {BUSINESS.hours}</span>
+          <span className="hide-sm"><MapPin size={15} /> Covering {BUSINESS.area}</span>
+          <a href={`mailto:${BUSINESS.email}`} className="hide-sm"><Mail size={15} /> {BUSINESS.email}</a>
         </div>
       </div>
-      <div id="mobile-navigation" className={`mobile-nav ${open ? 'open' : ''}`} hidden={!open}>
-        <nav aria-label="Mobile navigation" className="container">
-          {NAV.map(item => <NavLink key={item.to} to={item.to} end={item.to === '/'}>{item.label}<ChevronRight size={17} /></NavLink>)}
-          <ContactPhone className="button button-amber mobile-call" />
-        </nav>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="wrap">
+          <Brand />
+          <nav className="nav" aria-label="Main">
+            {NAV.map((n) => (
+              <NavLink key={n.to} to={n.to} end={n.to === '/'} className={({ isActive }) => (isActive ? 'active' : '')}>{n.label}</NavLink>
+            ))}
+          </nav>
+          <div className="header-cta">
+            <a className="btn btn-primary btn-sm" href={BUSINESS.phoneHref}><Phone size={17} /> {BUSINESS.phone}</a>
+            <button className="burger" aria-label="Open menu" onClick={() => setOpen(true)}><Menu size={22} /></button>
+          </div>
+        </div>
+      </header>
+      <div className={`drawer ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
+        <div className="drawer-panel" onClick={(e) => e.stopPropagation()}>
+          <button className="burger" style={{ display: 'grid', alignSelf: 'flex-end' }} aria-label="Close menu" onClick={() => setOpen(false)}><X size={22} /></button>
+          {NAV.map((n) => (<Link key={n.to} className="link" to={n.to}>{n.label}</Link>))}
+          <a className="btn btn-primary" href={BUSINESS.phoneHref}><Phone size={18} /> Call {BUSINESS.phone}</a>
+          <a className="btn btn-outline" href={BUSINESS.whatsappHref}><MessageCircle size={18} /> WhatsApp us</a>
+        </div>
       </div>
-    </header>
-  </>;
+    </>
+  );
 }
 
 export function Footer() {
-  return <footer className="site-footer">
-    <div className="container footer-grid">
-      <div className="footer-about"><Link to="/" className="brand"><Logo /></Link>
-        <p>Residential locksmith help for household doors, locks and windows in Bradford.</p>
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div className="footer-grid">
+          <div>
+            <Brand />
+            <p style={{ marginTop: 20, maxWidth: 320 }}>
+              A dedicated home locksmith for Bradford families. Fast, tidy, fairly priced and available any hour of the day or night.
+            </p>
+          </div>
+          <div>
+            <h4>Services</h4>
+            <ul>
+              {SERVICES.slice(0, 6).map((s) => (
+                <li key={s.slug}><Link to={`/services/${s.slug}`}><ChevronRight size={15} /> {s.title}</Link></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <ul>
+              {NAV.map((n) => (<li key={n.to}><Link to={n.to}><ChevronRight size={15} /> {n.label}</Link></li>))}
+            </ul>
+          </div>
+          <div>
+            <h4>Get in touch</h4>
+            <ul>
+              <li><a href={BUSINESS.phoneHref} className="ct"><Phone size={17} /> {BUSINESS.phone}</a></li>
+              <li><a href={`mailto:${BUSINESS.email}`} className="ct"><Mail size={17} /> {BUSINESS.email}</a></li>
+              <li><span className="ct"><MapPin size={17} /> {BUSINESS.area}</span></li>
+              <li><span className="ct"><Clock size={17} /> {BUSINESS.hours}</span></li>
+            </ul>
+          </div>
+        </div>
+        <div className="legal">
+          <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
+          <span></span>
+        </div>
       </div>
-      <div><h3>Explore</h3><ul>{NAV.map(n => <li key={n.to}><Link to={n.to}>{n.label}</Link></li>)}<li><Link to="/privacy-policy">Privacy policy</Link></li></ul></div>
-      <div><h3>Home services</h3><ul>{SERVICES.slice(0, 6).map(s => <li key={s.slug}><Link to={s.path}>{s.title}</Link></li>)}</ul></div>
-      <div><h3>Contact details</h3><ul className="footer-contact">
-        <li><Phone size={16} />{BUSINESS.phoneHref ? <a href={BUSINESS.phoneHref}>{BUSINESS.phoneDisplay}</a> : <span>{BUSINESS.phoneDisplay}</span>}</li>
-        <li><Mail size={16} />{BUSINESS.emailHref ? <a href={BUSINESS.emailHref}>{BUSINESS.email}</a> : <span>{BUSINESS.email}</span>}</li>
-        <li><MapPin size={16} /><span>{BUSINESS.address}</span></li>
-      </ul><small className="hours-small">{BUSINESS.hours}</small></div>
-    </div>
-    <div className="container footer-bottom"><span>© {new Date().getFullYear()} {BUSINESS.name}</span><span>Household locks, doors & windows in Bradford.</span></div>
-  </footer>;
+    </footer>
+  );
 }
 
 export function FloatingBits() {
-  const [visible, setVisible] = useState(false);
-  useEffect(() => { const fn = () => setVisible(window.scrollY > 520); window.addEventListener('scroll', fn, { passive: true }); return () => window.removeEventListener('scroll', fn); }, []);
-  return <>
-    <div className="mobile-contact"><ContactPhone className="button button-amber" /><Link className="button button-light" to="/contact">Send an enquiry</Link></div>
-    <button className={`back-top ${visible ? 'visible' : ''}`} type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={19} /></button>
-  </>;
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const on = () => setShow(window.scrollY > 600);
+    window.addEventListener('scroll', on, { passive: true });
+    return () => window.removeEventListener('scroll', on);
+  }, []);
+  return (
+    <>
+      <div className="callbar">
+        <a className="btn btn-primary btn-sm" href={BUSINESS.phoneHref}><Phone size={17} /> Call now</a>
+        <a className="btn btn-ghost btn-sm" href={BUSINESS.whatsappHref}><MessageCircle size={17} /> WhatsApp</a>
+      </div>
+      <button className={`to-top ${show ? 'show' : ''}`} aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <ArrowUp size={20} />
+      </button>
+    </>
+  );
 }

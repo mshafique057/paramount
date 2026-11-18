@@ -1,8 +1,15 @@
 import React from 'react';
-import { FAQS } from '../data.js';
-import { useTitle, PageIntro, CtaBand } from '../components/ui.jsx';
+import { FAQS, IMG } from '../data.js';
+import { PageBanner, CtaBand, useTitle } from '../components/ui.jsx';
 import FaqList from '../components/FaqList.jsx';
+
 export default function FAQ() {
-  useTitle('FAQs | Paramount Locksmiths', 'Answers to common questions about residential locksmith services in Bradford.');
-  return <><PageIntro title="Frequently asked questions" text="Useful information about household lockouts, lost keys, lock repairs and contacting a residential locksmith." /><section className="section"><div className="container faq-page"><FaqList items={FAQS} /></div></section><CtaBand /></>;
+  useTitle('Locksmith FAQs | Paramount Locksmiths', 'Answers to common questions about home lockouts, pricing, arrival times and lock upgrades in Bradford.');
+  return (
+    <>
+      <PageBanner image={IMG.cylinder} title="Frequently asked questions" text="Straight answers about prices, arrival times and how we work." crumbs={[{ label: 'FAQ' }]} />
+      <section className="section"><div className="wrap"><FaqList items={FAQS} /></div></section>
+      <CtaBand />
+    </>
+  );
 }

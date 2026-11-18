@@ -1,12 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle2, House, KeyRound, AppWindow } from 'lucide-react';
-import { IMG } from '../data.js';
-import { useTitle, PageIntro, CtaBand, Reveal } from '../components/ui.jsx';
+import { Check } from 'lucide-react';
+import { IMG, PROMISES } from '../data.js';
+import { PageBanner, CtaBand, Reveal, Icon, SectionHead, useTitle } from '../components/ui.jsx';
+
 export default function About() {
-  useTitle('About | Paramount Locksmiths', 'Learn about the residential locksmith services offered in Bradford.');
-  return <><PageIntro title="About the service" text="A residential locksmith service focused on household doors, locks and windows in Bradford." image={IMG.door} />
-    <section className="section"><div className="container split-layout"><Reveal className="split-photo"><img src={IMG.handle} alt="Close-up of a household door handle and lock" loading="lazy" width="900" height="1000" /></Reveal><div className="split-copy"><span className="eyebrow">A home-first approach</span><h2>Focused on the locks around your home</h2><p className="intro-copy">Paramount Locksmiths is presented as a residential locksmith service for people dealing with everyday household lock and door problems.</p><p>That includes lock changes, home lockouts, lost or broken keys, faulty uPVC and composite door mechanisms, and residential window locks.</p><p>The aim is to make the next step clear: understand what has happened, identify the type of lock involved and discuss the work before anything is carried out.</p><Link className="button button-navy" to="/services">Explore residential services <CheckCircle2 size={17} /></Link></div></div></section>
-    <section className="section section-ivory"><div className="container"><div className="three-points"><div><House /><h3>Household doors</h3><p>Help with common residential door locks and locking mechanisms.</p></div><div><KeyRound /><h3>Keys & cylinders</h3><p>Support with lost, stolen, broken or stuck household keys.</p></div><div><AppWindow /><h3>Window locks</h3><p>Residential window handle and lock repairs or replacements.</p></div></div></div></section><CtaBand />
-  </>;
+  useTitle('About Us | Paramount Locksmiths', 'Meet Paramount Locksmiths: a dedicated residential locksmith for Bradford homes, with honest prices and tidy, guaranteed work.');
+  return (
+    <>
+      <PageBanner image={IMG.window} title="About Paramount Locksmiths" text="A local locksmith focused entirely on the doors and windows of people's homes." crumbs={[{ label: 'About' }]} />
+      <section className="section">
+        <div className="wrap split">
+          <Reveal className="split-img"><img src={IMG.window} alt="Locksmith repairing a window lock" loading="lazy" /></Reveal>
+          <Reveal delay={0.1}>
+            <span className="eyebrow">Our story</span>
+            <h2>Built for homeowners, not for everyone</h2>
+            <p>We chose to work only on residential locks. That focus means our vans are stocked for the doors and windows found in Bradford homes: uPVC and composite doors, timber doors with mortice locks and double-glazed windows.</p>
+            <p>Every job begins with a clear conversation and ends with a tested lock, a tidy doorstep and a receipt you can keep for your insurer.</p>
+            <ul className="ticks">
+              <li><Check size={20} /> Residential only: houses, bungalows, flats and cottages</li>
+              <li><Check size={20} /> Fixed price agreed before we travel</li>
+              <li><Check size={20} /> Non-destructive entry wherever possible</li>
+              <li><Check size={20} /> 12-month guarantee on parts and workmanship</li>
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+      <section className="section tint">
+        <div className="wrap">
+          <SectionHead eyebrow="What we stand for" title="Our commitments" />
+          <div className="grid g4">
+            {PROMISES.map((x, i) => (
+              <Reveal key={x.title} delay={i * 0.08} className="promise">
+                <div className="ic"><Icon name={x.icon} size={26} /></div>
+                <h3>{x.title}</h3><p>{x.text}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+      <CtaBand />
+    </>
+  );
 }

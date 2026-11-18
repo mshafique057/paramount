@@ -19,10 +19,10 @@ export default function Home() {
       <section className="stats">
         <div className="wrap">
           <div className="stats-grid">
-            <div className="stat"><b><Counter to={24} suffix="/7" /></b><span>Emergency cover</span></div>
-            <div className="stat"><b><Counter to={30} suffix="–60" /></b><span>Minutes typical arrival</span></div>
-            <div className="stat"><b><Counter to={1200} suffix="+" /></b><span>Homes helped locally</span></div>
-            <div className="stat"><b><Counter to={5} decimals={1} suffix="★" /></b><span>Average customer rating</span></div>
+            <div className="stat"><b>24/7</b><span>Emergency cover</span></div>
+            <div className="stat"><b>30–60</b><span>Minutes typical arrival</span></div>
+            <div className="stat"><b>Fixed</b><span>Price agreed before we travel</span></div>
+            <div className="stat"><b>12 mo</b><span>Guarantee on parts and work</span></div>
           </div>
         </div>
       </section>
@@ -130,21 +130,6 @@ export default function Home() {
           <Reveal className="split-img" delay={0.1}>
             <img src={IMG.cylinder} alt="Fitting a new cylinder lock on a uPVC door" loading="lazy" />
           </Reveal>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap">
-          <SectionHead eyebrow="Local reviews" title="Neighbours who called us first" />
-          <div className="grid g2">
-            {REVIEWS.map((r, i) => (
-              <Reveal key={r.name} delay={(i % 2) * 0.1} className="review">
-                <Stars />
-                <p>“{r.text}”</p>
-                <div className="who"><span className="avatar">{r.name[0]}</span><div><b>{r.name}</b><small>{r.place}, Bradford</small></div></div>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 

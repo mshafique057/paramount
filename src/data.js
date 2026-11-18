@@ -27,9 +27,9 @@ export const IMG = {
 
 export const NAV = [
   { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
   { to: '/areas', label: 'Areas' },
-  { to: '/about', label: 'About' },
   { to: '/faq', label: 'FAQ' },
   { to: '/contact', label: 'Contact' }
 ];

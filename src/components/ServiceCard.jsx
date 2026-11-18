@@ -8,18 +8,20 @@ export default function ServiceCard({ s, i = 0, index }) {
   const n = String(index ?? i + 1).padStart(2, '0');
   return (
     <Reveal delay={(i % 4) * 0.07} style={{ height: '100%' }}>
-      <article className="sc">
-        <Link to={`/services/${s.slug}`} className="sc-img" aria-label={s.title}>
+      <article className="svc-card">
+        <Link to={`/services/${s.slug}`} className="svc-card-media" aria-label={s.title}>
           <img src={s.image} alt={s.title} loading="lazy" />
-          <span className="sc-num">{n}</span>
         </Link>
-        <span className="sc-ic"><Icon name={s.icon} size={24} /></span>
-        <div className="sc-body">
+        <div className="svc-card-body">
+          <div className="svc-card-top">
+            <span className="svc-card-ic"><Icon name={s.icon} size={22} /></span>
+            <span className="svc-card-num">{n}</span>
+          </div>
           <h3><Link to={`/services/${s.slug}`}>{s.title}</Link></h3>
           <p>{s.short}</p>
-          <div className="sc-foot">
-            <Link to={`/services/${s.slug}`} className="more">Learn more <ArrowRight size={16} /></Link>
-            <a className="sc-call" href={BUSINESS.phoneHref} aria-label={`Call about ${s.title}`}><Phone size={16} /></a>
+          <div className="svc-card-foot">
+            <Link to={`/services/${s.slug}`} className="svc-card-link">Learn more <ArrowRight size={16} /></Link>
+            <a className="svc-card-call" href={BUSINESS.phoneHref} aria-label={`Call about ${s.title}`}><Phone size={16} /></a>
           </div>
         </div>
       </article>

@@ -430,9 +430,69 @@ p { margin: 0 0 16px; }
   .reveal, .hero-up > * { opacity: 1; transform: none; }
 }
 
-/* Paramount Locksmiths logo images: dark version on light header, white version on dark footer */
-.logo-img { display: block; height: 62px; width: auto; }
-.logo-img--light { display: none; }
-.footer .logo-img--dark { display: none; }
-.footer .logo-img--light { display: block; }
-@media (max-width: 640px) { .logo-img { height: 48px; } }
+/* Paramount Locksmiths logo (colour, as supplied) */
+.logo-img { display: block; height: 64px; width: auto; }
+.footer .logo { background: #fff; padding: 12px 16px; border-radius: 16px; display: inline-flex; }
+@media (max-width: 640px) { .logo-img { height: 50px; } }
+
+/* ---- Full-width layout ---- */
+.wrap { max-width: none; padding: 0 clamp(20px, 4vw, 72px); }
+.section { padding: clamp(60px, 7vw, 104px) 0; }
+
+/* Balanced page banners: copy on the left, photo panel fills the right column */
+.banner { padding: clamp(56px, 6vw, 96px) 0; }
+.banner-img { top: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); right: clamp(20px, 4vw, 72px); left: auto; width: min(44%, 640px); height: auto; opacity: 1; border-radius: 22px; -webkit-mask-image: none; mask-image: none; box-shadow: var(--shadow); }
+.banner::before { background: linear-gradient(90deg, #fbf7ef 0%, #fbf7ef 46%, rgba(251, 247, 239, 0.2) 100%); }
+.banner .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 44%); }
+.banner .wrap > * { grid-column: 1; max-width: 640px; }
+.banner p { font-size: 18px; }
+
+/* Hero: text left, full photo panel right (no faded edge) */
+.hero-bg { width: 46%; -webkit-mask-image: none; mask-image: none; top: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); right: clamp(20px, 4vw, 72px); border-radius: 22px; }
+.hs-wrap { display: flex; flex-direction: column; }
+.hs-stack { max-width: 56%; }
+.hs-wrap .chips { max-width: 56%; }
+@media (max-width: 1020px) {
+  .hero-bg { width: 100%; top: 0; bottom: 0; right: 0; border-radius: 0; }
+  .hs-stack, .hs-wrap .chips { max-width: none; }
+  .banner .wrap { grid-template-columns: 1fr; }
+  .banner-img { position: relative; width: auto; height: 260px; margin: 0 clamp(20px, 4vw, 72px) 32px; opacity: 1; }
+  .banner::before { background: #fbf7ef; }
+}
+
+/* Balanced section grids */
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g3 > * { grid-column: auto; }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1020px) {
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .g3 > :last-child:nth-child(odd), .g4 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  .g3, .g4 { grid-template-columns: 1fr; }
+  .g3 > :last-child:nth-child(odd), .g4 > :last-child:nth-child(odd) { grid-column: auto; }
+}
+
+/* ---- Modern service cards ---- */
+.svc-card { display: flex; flex-direction: column; height: 100%; background: #fff; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.5); transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.svc-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.svc-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ivory); }
+.svc-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+.svc-card:hover .svc-card-media img { transform: scale(1.05); }
+.svc-card-body { display: flex; flex-direction: column; flex: 1; padding: 24px 26px 26px; }
+.svc-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.svc-card-ic { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--ink); color: var(--brass); }
+.svc-card-num { font-family: var(--font-head); font-size: 15px; font-weight: 700; color: var(--brass-d); letter-spacing: 0.08em; }
+.svc-card-body h3 { font-size: 21px; margin-bottom: 10px; }
+.svc-card-body h3 a:hover { color: var(--brass-d); }
+.svc-card-body p { font-size: 15px; line-height: 1.6; margin: 0 0 20px; flex: 1; }
+.svc-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 18px; border-top: 1px solid var(--line); }
+.svc-card-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--ink); }
+.svc-card-link svg { transition: transform 0.25s; }
+.svc-card:hover .svc-card-link svg { transform: translateX(5px); }
+.svc-card-call { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-grad); color: var(--ink); }
+
+/* Stats bar: four equal cells */
+.stats-grid { grid-template-columns: repeat(4, 1fr); }
+.stat b { font-size: clamp(30px, 3vw, 40px); }

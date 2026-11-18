@@ -97,7 +97,7 @@ export function Footer() {
         </div>
         <div className="legal">
           <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
-          <span></span>
+          <span>Residential locksmith services only.</span>
         </div>
       </div>
     </footer>

@@ -6,8 +6,8 @@ export const BUSINESS = {
   tagline: '24/7 Home Locksmith Service',
   phone: '01274 000000',
   phoneHref: 'tel:01274000000',
-  whatsappHref: 'https://wa.me/447000000000',
-  email: 'hello@paramountlocksmiths.co.uk',
+  whatsappHref: 'https://wa.me/447700900247',
+  email: 'hello@example.com',
   area: 'Bradford & West Yorkshire',
   hours: 'Open 24 hours, 7 days a week',
   response: '30–60 min'

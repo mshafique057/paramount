@@ -549,3 +549,6 @@ p { margin: 0 0 16px; }
   .stat:last-child { border-bottom: 0; }
   .hs-wrap { padding-bottom: 140px !important; }
 }
+
+.drawer-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 14px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+.drawer-head .logo-img { height: 50px; }

@@ -50,7 +50,10 @@ export function Header() {
       </header>
       <div className={`drawer ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
         <div className="drawer-panel" onClick={(e) => e.stopPropagation()}>
-          <button className="burger" style={{ display: 'grid', alignSelf: 'flex-end' }} aria-label="Close menu" onClick={() => setOpen(false)}><X size={22} /></button>
+          <div className="drawer-head">
+            <Brand onClick={() => setOpen(false)} />
+            <button className="burger" style={{ display: 'grid' }} aria-label="Close menu" onClick={() => setOpen(false)}><X size={22} /></button>
+          </div>
           {NAV.map((n) => (<Link key={n.to} className="link" to={n.to}>{n.label}</Link>))}
           <a className="btn btn-primary" href={BUSINESS.phoneHref}><Phone size={18} /> Call {BUSINESS.phone}</a>
           <a className="btn btn-outline" href={BUSINESS.whatsappHref}><MessageCircle size={18} /> WhatsApp us</a>

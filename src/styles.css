@@ -271,7 +271,7 @@ p { margin: 0 0 16px; }
 .svc-intro svg { color: var(--brass-d); }
 
 /* Areas page */
-.checker { position: relative; overflow: hidden; border-radius: 26px; padding: clamp(28px, 5vw, 52px); color: var(--muted); background: radial-gradient(520px 260px at 100% 0%, rgba(232, 168, 0, 0.22), transparent 70%), #fff; border: 1px solid var(--line); box-shadow: var(--shadow); margin-top: -64px; z-index: 5; }
+.checker { position: relative; overflow: hidden; border-radius: 26px; padding: clamp(28px, 5vw, 52px); color: var(--muted); background: radial-gradient(520px 260px at 100% 0%, rgba(232, 168, 0, 0.22), transparent 70%), #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
 .checker::before { content: ''; position: absolute; left: 0; top: 0; right: 0; height: 5px; background: var(--gold-grad); }
 .checker h2 { color: var(--ink); font-size: clamp(26px, 3vw, 38px); }
 .checker-form { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
@@ -430,35 +430,13 @@ p { margin: 0 0 16px; }
   .reveal, .hero-up > * { opacity: 1; transform: none; }
 }
 
-/* Paramount Locksmiths logo (colour, as supplied) */
-.logo-img { display: block; height: 64px; width: auto; }
-.footer .logo { background: #fff; padding: 12px 16px; border-radius: 16px; display: inline-flex; }
-@media (max-width: 640px) { .logo-img { height: 50px; } }
+/* Paramount Locksmiths logo */
+.logo-img { display: block; width: auto; }
+.footer .logo-img { height: 72px; }
 
 /* ---- Full-width layout ---- */
 .wrap { max-width: none; padding: 0 clamp(20px, 4vw, 72px); }
 .section { padding: clamp(60px, 7vw, 104px) 0; }
-
-/* Balanced page banners: copy on the left, photo panel fills the right column */
-.banner { padding: clamp(56px, 6vw, 96px) 0; }
-.banner-img { top: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); right: clamp(20px, 4vw, 72px); left: auto; width: min(44%, 640px); height: auto; opacity: 1; border-radius: 22px; -webkit-mask-image: none; mask-image: none; box-shadow: var(--shadow); }
-.banner::before { background: linear-gradient(90deg, #fbf7ef 0%, #fbf7ef 46%, rgba(251, 247, 239, 0.2) 100%); }
-.banner .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 44%); }
-.banner .wrap > * { grid-column: 1; max-width: 640px; }
-.banner p { font-size: 18px; }
-
-/* Hero: text left, full photo panel right (no faded edge) */
-.hero-bg { width: 46%; -webkit-mask-image: none; mask-image: none; top: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); right: clamp(20px, 4vw, 72px); border-radius: 22px; }
-.hs-wrap { display: flex; flex-direction: column; }
-.hs-stack { max-width: 56%; }
-.hs-wrap .chips { max-width: 56%; }
-@media (max-width: 1020px) {
-  .hero-bg { width: 100%; top: 0; bottom: 0; right: 0; border-radius: 0; }
-  .hs-stack, .hs-wrap .chips { max-width: none; }
-  .banner .wrap { grid-template-columns: 1fr; }
-  .banner-img { position: relative; width: auto; height: 260px; margin: 0 clamp(20px, 4vw, 72px) 32px; opacity: 1; }
-  .banner::before { background: #fbf7ef; }
-}
 
 /* Balanced section grids */
 .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -496,3 +474,16 @@ p { margin: 0 0 16px; }
 /* Stats bar: four equal cells */
 .stats-grid { grid-template-columns: repeat(4, 1fr); }
 .stat b { font-size: clamp(30px, 3vw, 40px); }
+
+/* Header: larger logo, main menu centred */
+.logo-img { height: 88px; }
+.header .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 108px; }
+.header .brand { justify-self: start; }
+.nav { justify-content: center; gap: 4px; }
+.nav a { font-size: 17px; padding: 12px 18px; }
+.header-cta { justify-self: end; }
+@media (max-width: 1020px) {
+  .header .wrap { grid-template-columns: 1fr auto; min-height: 90px; }
+  .logo-img { height: 66px; }
+}
+@media (max-width: 640px) { .logo-img { height: 56px; } }

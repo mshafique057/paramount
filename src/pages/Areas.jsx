@@ -29,7 +29,8 @@ export default function Areas() {
     <>
       <PageBanner tall image={IMG.door} title="Areas we cover" text="Local vans across Bradford and the surrounding West Yorkshire towns." crumbs={[{ label: 'Areas' }]} />
 
-      <div className="wrap">
+      <section className="section">
+        <div className="wrap">
         <div className="checker">
           <span className="eyebrow">Postcode checker</span>
           <h2>Do we cover your street?</h2>
@@ -56,7 +57,8 @@ export default function Areas() {
             </div>
           )}
         </div>
-      </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap">

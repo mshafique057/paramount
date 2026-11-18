@@ -4,10 +4,10 @@ import { Phone, Mail, MapPin, Clock, Menu, X, MessageCircle, ArrowUp, ChevronRig
 import { BUSINESS, NAV, SERVICES } from '../data.js';
 import Logo from './Logo.jsx';
 
-function Brand({ onClick }) {
+function Brand({ onClick, light = false }) {
   return (
     <Link to="/" className="brand" onClick={onClick} aria-label={BUSINESS.name}>
-      <Logo />
+      <Logo light={light} />
     </Link>
   );
 }
@@ -66,7 +66,7 @@ export function Footer() {
       <div className="wrap">
         <div className="footer-grid">
           <div>
-            <Brand />
+            <Brand light />
             <p style={{ marginTop: 20, maxWidth: 320 }}>
               A dedicated home locksmith for Bradford families. Fast, tidy, fairly priced and available any hour of the day or night.
             </p>
@@ -97,7 +97,7 @@ export function Footer() {
         </div>
         <div className="legal">
           <span>© {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.</span>
-          <span>Residential locksmith services only.</span>
+          <span>Trusted locksmith services you can count on.</span>
         </div>
       </div>
     </footer>

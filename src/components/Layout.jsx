@@ -50,7 +50,6 @@ export function Footer() {
     <div className="container footer-grid">
       <div className="footer-about"><Link to="/" className="brand"><Logo /></Link>
         <p>Residential locksmith help for household doors, locks and windows in Bradford.</p>
-        <span className="footer-note">Residential customers only</span>
       </div>
       <div><h3>Explore</h3><ul>{NAV.map(n => <li key={n.to}><Link to={n.to}>{n.label}</Link></li>)}<li><Link to="/privacy-policy">Privacy policy</Link></li></ul></div>
       <div><h3>Home services</h3><ul>{SERVICES.slice(0, 6).map(s => <li key={s.slug}><Link to={s.path}>{s.title}</Link></li>)}</ul></div>

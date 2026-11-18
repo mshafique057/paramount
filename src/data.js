@@ -5,8 +5,8 @@
  */
 export const BUSINESS = {
   name: 'Paramount Locksmiths',
-  phoneDisplay: '01632 960 123', // DUMMY – replace in admin
-  phoneHref: 'tel:+441632960123', // DUMMY – must match phoneDisplay
+  phoneDisplay: '01274 000000', // DUMMY (Bradford 01274 code + zeros) – replace in admin
+  phoneHref: 'tel:+441274000000', // DUMMY – must match phoneDisplay
   email: 'hello@example.com', // DUMMY – replace in admin
   emailHref: 'mailto:hello@example.com', // DUMMY – must match email
   address: '1 Example Street, Bradford BD1 1AA', // DUMMY – replace in admin
@@ -34,7 +34,6 @@ export const NAV = [
   { to: '/services', label: 'Services' },
   { to: '/areas', label: 'Areas covered' },
   { to: '/about', label: 'About' },
-  { to: '/blog', label: 'Blog' },
   { to: '/faqs', label: 'FAQs' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -136,7 +135,20 @@ export const HOME = {
     ctaPrimary: 'Call us now',
     ctaSecondary: 'See our services',
     image: '/uk_composite_front_door.webp',
+    alt: 'Modern UK composite residential front door',
   },
+  // Extra slides for the dark homepage slider (shown after the hero above).
+  extraSlides: [
+    { eyebrow: 'Lock changes · Bradford', headline: 'New locks, fitted properly.', highlight: 'fitted properly.', sub: 'Anti-snap cylinders, mortice locks and uPVC or composite door locks, explained before any work starts.', ctaPrimary: 'Call us now', image: '/uk_upvc_cylinder_lock.webp', alt: 'Euro profile cylinder lock for a UK uPVC door' },
+    { eyebrow: 'Repairs · Bradford', headline: 'Stiff keys and loose handles?', highlight: 'loose handles?', sub: 'Repairs for household doors and windows, starting with the likely cause so you know what the job involves.', ctaPrimary: 'Call us now', image: '/uk_multipoint_handle.webp', alt: 'Multipoint locking handle on a UK residential door' },
+  ],
+  // Plus points shown under the slider. Owner to confirm each point before publishing.
+  plusPoints: [
+    { title: '24/7 emergency help', text: 'Call at any time about an urgent household lock problem.' },
+    { title: 'No call-out fee', text: 'Asking us to come out is not charged on its own.' },
+    { title: 'Price agreed first', text: 'We talk through the cost before any work starts.' },
+    { title: 'Clear options', text: 'We explain the choices so you can decide what suits your home.' },
+  ],
   ticker: ['Home lockouts', 'Lock changes', 'uPVC repairs', 'Window locks', 'Broken keys', 'Lost house keys', 'Anti-snap cylinders'],
   process: {
     heading: 'From first call to finished door',

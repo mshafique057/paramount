@@ -11,7 +11,7 @@ export default function BlogPost() {
 
   if (!post) {
     return <section className="page-hero2"><div className="container">
-      <h1 className="display2">Post not found</h1>
+      <h1>Post not found</h1>
       <Link className="btn btn-dark" to="/blog" style={{ marginTop: 30 }}>Back to the blog</Link>
     </div></section>;
   }
@@ -19,9 +19,9 @@ export default function BlogPost() {
   return <>
     <section className="page-hero2 section2 soft" style={{ paddingTop: 200, paddingBottom: 90 }}>
       <div className="container article2">
-        <Reveal><Link className="text-link2" to="/blog"><ArrowLeft size={18} /> All posts</Link></Reveal>
-        <Reveal delay={0.08}><span className="muted2" style={{ display: 'block', marginTop: 30 }}>{post.date}</span></Reveal>
-        <Reveal delay={0.12}><h1 className="display2" style={{ marginTop: 14 }}>{post.title}</h1></Reveal>
+        <Reveal><Link className="text-link" to="/blog"><ArrowLeft size={18} /> All posts</Link></Reveal>
+        <Reveal delay={0.08}><span className="date" style={{ display: 'block', marginTop: 30 }}>{post.date}</span></Reveal>
+        <Reveal delay={0.12}><h1  style={{ marginTop: 14 }}>{post.title}</h1></Reveal>
         {post.image && <Reveal delay={0.16}><img src={post.image} alt="" style={{ width: '100%', borderRadius: 22, marginTop: 40 }} /></Reveal>}
         <div style={{ marginTop: 50 }}>
           {post.body.map((para, i) => <Reveal key={i}><p>{para}</p></Reveal>)}

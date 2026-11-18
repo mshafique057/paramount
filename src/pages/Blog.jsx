@@ -11,15 +11,15 @@ export default function Blog() {
 
   return <section className="page-hero2 section2 soft" style={{ paddingTop: 200 }}>
     <div className="container">
-      <Reveal><span className="eyebrow2">Blog</span></Reveal>
-      <Reveal delay={0.08}><h1 className="display2">Home security notes</h1></Reveal>
+      <Reveal><span className="eyebrow">Blog</span></Reveal>
+      <Reveal delay={0.08}><h1>Home security notes</h1></Reveal>
       <div className="post-grid" style={{ marginTop: 60 }}>
         {posts.map((post, i) => <Reveal key={post.slug} delay={i * 0.08}>
           <Link to={`/blog/${post.slug}`} className="post-card">
-            <span className="muted2">{post.date}</span>
+            <span className="date">{post.date}</span>
             <h3>{post.title}</h3>
             <p>{post.excerpt}</p>
-            <span className="text-link2">Read more <ArrowRight size={16} /></span>
+            <span className="text-link">Read more <ArrowRight size={16} /></span>
           </Link>
         </Reveal>)}
       </div>
